@@ -1,0 +1,18 @@
+{
+  "name": "fredbradley/cranleigh-news-article-footer",
+  "require": {
+	"tareq1988/wordpress-settings-api-class": "^1.2",
+	"yahnis-elsts/plugin-update-checker": "^4.2"
+  },
+  "authors": [
+	{
+	  "name": "Fred Bradley",
+	  "email": "hello@fredbradley.co.uk"
+	}
+  ],
+  "autoload": {
+	"psr-4": {
+	  "FredBradley\\NewsArticleFooter\\": "src/"
+	}
+  }
+}
