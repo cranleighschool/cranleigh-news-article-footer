@@ -103,7 +103,7 @@ class Plugin {
 	public function add_my_content( string $content ) {
 
 		if ( is_single() && get_post_type() === 'post' ) {
-			$content .= '<div class="pull-out">' . $this->footerHTML . '</div>';
+			$content .= '<div class="pull-out news-article-footer-promo">' . wpautop($this->footerHTML) . '</div>';
 		}
 
 		return $content;
