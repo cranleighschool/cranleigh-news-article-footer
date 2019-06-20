@@ -8,7 +8,6 @@
 
 namespace FredBradley\NewsArticleFooter;
 
-
 /**
  * Class Plugin
  *
@@ -19,21 +18,21 @@ class Plugin {
 	/**
 	 * @var string
 	 */
-	private $footerHTML = "";
+	private $footerHTML = '';
 	/**
 	 * @var string
 	 */
-	private $facebookURI = "https://www.facebook.com/CranPrep";
+	private $facebookURI = 'https://www.facebook.com/CranPrep';
 	/**
 	 * @var string
 	 */
-	private $twitterURI = "https://twitter.com/CranleighPrep";
+	private $twitterURI = 'https://twitter.com/CranleighPrep';
 
 	/**
 	 * Plugin constructor.
 	 */
 	public function __construct() {
-		new PluginUpdateCheck('cranleigh-news-article-footer');
+		new PluginUpdateCheck( 'cranleigh-news-article-footer' );
 
 		$settings         = new Settings();
 		$this->footerHTML = $this->formatFooterHtml();
@@ -78,7 +77,7 @@ class Plugin {
 	private function formatUriLink( string $type, string $searchTerm ) {
 
 		$this->setURIVariable( $type );
-		$link             = '<a data-event-category="true" data-category="NewsFooter" data-action="Click" data-label="' . $type . '" href="' . $this->{$type . "URI"} . '" target="_blank"><i class="fa fa-fw fa-' . $type . '"></i>' . ucwords( $searchTerm ) . '</a>';
+		$link             = '<a data-event-category="true" data-category="NewsFooter" data-action="Click" data-label="' . $type . '" href="' . $this->{$type . 'URI'} . '" target="_blank"><i class="fa fa-fw fa-' . $type . '"></i>' . ucwords( $searchTerm ) . '</a>';
 		$this->footerHTML = str_replace( $searchTerm, $link, $this->footerHTML );
 
 		return $this->footerHTML;
@@ -89,7 +88,7 @@ class Plugin {
 	 */
 	private function setURIVariable( string $type ) {
 
-		$setting = strtolower( $type ) . "URI";
+		$setting = strtolower( $type ) . 'URI';
 		if ( null != $this->getSetting( $setting ) ) {
 			$this->$setting = $this->getSetting( $setting );
 		}
@@ -103,7 +102,7 @@ class Plugin {
 	public function add_my_content( string $content ) {
 
 		if ( is_single() && get_post_type() === 'post' ) {
-			$content .= '<div class="pull-out news-article-footer-promo">' . wpautop($this->footerHTML) . '</div>';
+			$content .= '<div class="pull-out news-article-footer-promo">' . wpautop( $this->footerHTML ) . '</div>';
 		}
 
 		return $content;

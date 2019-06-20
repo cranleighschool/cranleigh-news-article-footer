@@ -21,7 +21,7 @@ class Settings {
 
 	function __construct() {
 
-		$this->settings_api = new WeDevs_Settings_API;
+		$this->settings_api = new WeDevs_Settings_API();
 
 		add_action( 'admin_init', [ $this, 'admin_init' ] );
 		add_action( 'admin_menu', [ $this, 'admin_menu' ] );
@@ -29,11 +29,11 @@ class Settings {
 
 	function admin_init() {
 
-		//set the settings
+		// set the settings
 		$this->settings_api->set_sections( $this->get_settings_sections() );
 		$this->settings_api->set_fields( $this->get_settings_fields() );
 
-		//initialize settings
+		// initialize settings
 		$this->settings_api->admin_init();
 	}
 
@@ -42,7 +42,7 @@ class Settings {
 		$sections = [
 			[
 				'id'    => 'news_article_settings',
-				'title' => __( 'News Article Footer', 'cranleigh-2016' )
+				'title' => __( 'News Article Footer', 'cranleigh-2016' ),
 			],
 		];
 
@@ -63,10 +63,10 @@ class Settings {
 					'label'   => __( 'News Article Text', 'wedevs' ),
 					'desc'    => __( "Don't bother putting HTML Tags in here", 'wedevs' ),
 					'type'    => 'textarea',
-					'default' => "Life at Cranleigh is always busy! For regular updates on everything that happens at school please follow us on Facebook or Twitter."
+					'default' => 'Life at Cranleigh is always busy! For regular updates on everything that happens at school please follow us on Facebook or Twitter.',
 				],
 				$this->socialURIField( 'twitter' ),
-				$this->socialURIField( 'facebook' )
+				$this->socialURIField( 'facebook' ),
 			],
 		];
 
@@ -76,16 +76,21 @@ class Settings {
 	public function socialURIField( string $network ) {
 
 		return [
-			"name"  => $network . "URI",
-			"label" => __( ucwords( $network ) . " URI", 'cranleigh-2016' ),
-			"text"  => "text"
+			'name'  => $network . 'URI',
+			'label' => __( ucwords( $network ) . ' URI', 'cranleigh-2016' ),
+			'text'  => 'text',
 		];
 	}
 
 	function admin_menu() {
 
-		add_options_page( 'News Post Footer', 'News Post Footer', 'edit_posts', 'NewsArticleFooterSettings',
-			[ $this, 'plugin_page' ] );
+		add_options_page(
+			'News Post Footer',
+			'News Post Footer',
+			'edit_posts',
+			'NewsArticleFooterSettings',
+			[ $this, 'plugin_page' ]
+		);
 	}
 
 	function plugin_page() {

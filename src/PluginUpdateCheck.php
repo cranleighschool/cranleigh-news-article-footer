@@ -12,7 +12,7 @@ use Puc_v4_Factory;
 
 class PluginUpdateCheck {
 
-	public function __construct( string $plugin_name, string $user = "cranleighschool" ) {
+	public function __construct( string $plugin_name, string $user = 'cranleighschool' ) {
 
 		$this->update_check( $plugin_name, $user );
 	}
